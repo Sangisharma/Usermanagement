@@ -2,18 +2,36 @@ package com.usermanagement.exceptions;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class ErrorDetails {
-	private String URI;
-	private String message;
-	private Date timestamp;
-	
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+
+public class ErrorDetails {
+	private static final Logger logger =  LoggerFactory.getLogger(ErrorDetails.class);
+	private Date timestamp;
+	private String message;
+	private String details;
+
+	public ErrorDetails(Date timestamp, String message, String details) {
+		super();
+		logger.info("ErrorDetails class");
+		this.timestamp = timestamp;
+		this.message = message;
+		this.details = details;
+	}
+
+	public Date getTimestamp() {
+		logger.info("timestamp");
+		return timestamp;
+	}
+
+	public String getMessage() {
+		logger.info(message);
+		return message;
+	}
+
+	public String getDetails() {
+		logger.info(details);
+		return details;
+	}
 }
